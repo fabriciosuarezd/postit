@@ -1,11 +1,22 @@
 import PostitImage from '@/assets/images/postit.png';
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useRouter } from 'expo-router';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const HomeScreen = () => {
+
+  const router = useRouter()
+
   return (
     <View style={styles.container} >
       <Image source={PostitImage} style={styles.image} />
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text style={styles.titulo}>Bienvenidos a Nuestra Super Aplicación</Text>
+      <Text style={styles.subtitulo}>Captura tus notas en cualquie lugar y en cualquier momento</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={()=>router.push('./notes')}
+      >
+        <Text style={{color:'#fff', fontWeight:'bold'}}>Iniciar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -23,6 +34,27 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom:20,
     borderRadius:10
+  },
+  titulo: {
+    fontSize:28,
+    fontWeight: 'bold',
+    marginBottom:10,
+    color: '#333',
+    textAlign: 'center'
+  },
+  subtitulo: {
+    fontSize:16,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom:20
+  },
+  button:{
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius:8,
+    alignItems: 'center',
+
   }
 })
 
